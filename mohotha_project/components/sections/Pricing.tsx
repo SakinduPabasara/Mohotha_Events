@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const freePlan = [
   "Single invitation design",
@@ -19,10 +21,33 @@ const premiumPlan = [
 ];
 
 export default function Pricing() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 40, damping: 20, duration: 1.2 } 
+    },
+  };
+
   return (
     <section id="pricing" className="py-24 lg:py-36 bg-[#050505]">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mb-20 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1 }}
+          className="mb-20 text-center"
+        >
           <span className="text-xs font-medium tracking-[0.3em] text-[#5c5c5c] uppercase">Investment</span>
           <h2 className="heading-font mt-6 text-4xl font-normal text-white md:text-5xl lg:text-6xl">
             Transparent <span className="text-[#CBA365] italic">Pricing</span>
@@ -30,12 +55,18 @@ export default function Pricing() {
           <p className="mt-6 text-[#a3a3a3] text-sm font-light">
             An elegant pricing model with no hidden fees or recurring subscriptions.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2"
+        >
           
           {/* Complimentary */}
-          <div className="flex flex-col justify-between border border-[#111111] bg-[#0a0a0a] p-10 transition-colors duration-500 hover:border-[#222222]">
+          <motion.div variants={itemVariants} className="flex flex-col justify-between border border-[#111111] bg-[#0a0a0a] p-10 transition-colors duration-500 hover:border-[#222222]">
             <div>
               <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-[#5c5c5c]">
                 Complimentary
@@ -65,10 +96,10 @@ export default function Pricing() {
             >
               Contact Studio
             </Link>
-          </div>
+          </motion.div>
 
           {/* Premium */}
-          <div className="relative flex flex-col justify-between border border-[#CBA365]/30 bg-[#0a0a0a] p-10 shadow-2xl">
+          <motion.div variants={itemVariants} className="relative flex flex-col justify-between border border-[#CBA365]/30 bg-[#0a0a0a] p-10 shadow-2xl">
             {/* Subtle glow behind premium card */}
             <div className="absolute inset-0 bg-[#CBA365]/5 blur-3xl -z-10 pointer-events-none" />
             
@@ -102,15 +133,21 @@ export default function Pricing() {
             >
               Contact Studio
             </Link>
-          </div>
+          </motion.div>
           
-        </div>
+        </motion.div>
 
-        <div className="mt-16 text-center">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-16 text-center"
+        >
           <p className="text-[10px] tracking-[0.2em] uppercase text-[#5c5c5c]">
             Zero Subscriptions • Secure Checkout • Lifetime Archival
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

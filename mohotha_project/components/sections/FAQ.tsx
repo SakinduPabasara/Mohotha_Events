@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -31,20 +32,49 @@ const faqs = [
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 40, damping: 20, duration: 1.2 } 
+    },
+  };
+
   return (
     <section id="faq" className="py-24 lg:py-36 bg-[#050505]">
       <div className="mx-auto max-w-4xl px-4 lg:px-8">
         
-        <div className="mb-20 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1 }}
+          className="mb-20 text-center"
+        >
           <span className="text-xs font-medium tracking-[0.3em] text-[#5c5c5c] uppercase">Inquiries</span>
           <h2 className="heading-font mt-6 text-4xl font-normal text-white md:text-5xl lg:text-6xl">
             Common <span className="text-[#CBA365] italic">Questions</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="border-t border-[#111111]">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="border-t border-[#111111]"
+        >
           {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-[#111111]">
+            <motion.div key={i} variants={itemVariants} className="border-b border-[#111111]">
               <button
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
                 className="flex w-full items-center justify-between py-8 text-left group"
@@ -68,9 +98,9 @@ export default function FAQ() {
                   {faq.a}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
       </div>
     </section>

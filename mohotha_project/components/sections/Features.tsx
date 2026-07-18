@@ -1,6 +1,9 @@
+"use client";
+import { motion } from "framer-motion";
+
 const features = [
   {
-    icon: "I", // Abstract roman numeral or minimal icon
+    icon: "I",
     title: "Curated Aesthetics",
     description: "Our collections are deeply inspired by Sri Lankan heritage, transformed into minimalist, contemporary digital formats.",
   },
@@ -32,20 +35,49 @@ const features = [
 ];
 
 export default function Features() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { type: "spring", stiffness: 40, damping: 20, duration: 1.2 } 
+    },
+  };
+
   return (
     <section id="features" className="py-24 lg:py-36 bg-[#050505] border-t border-[#111111]">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         
-        <div className="mb-20 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1 }}
+          className="mb-20 text-center"
+        >
           <span className="text-xs font-medium tracking-[0.3em] text-[#5c5c5c] uppercase">The Platform</span>
           <h2 className="heading-font mt-6 text-4xl font-normal text-white md:text-5xl lg:text-6xl">
             Uncompromising <span className="text-[#CBA365] italic">Detail</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
+        >
           {features.map((f, index) => (
-            <div key={index} className="group flex flex-col items-start">
+            <motion.div key={index} variants={itemVariants} className="group flex flex-col items-start">
               {/* Minimalist Icon / Numeral */}
               <div className="heading-font text-4xl text-[#333333] mb-6 group-hover:text-[#CBA365] transition-colors duration-500">
                 {f.icon}.
@@ -60,9 +92,9 @@ export default function Features() {
               </p>
               
               <div className="mt-8 w-12 h-px bg-[#222222] group-hover:w-full group-hover:bg-[#CBA365]/30 transition-all duration-700 ease-in-out" />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
       </div>
     </section>
