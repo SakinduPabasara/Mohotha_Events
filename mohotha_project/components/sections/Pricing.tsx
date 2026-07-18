@@ -60,10 +60,10 @@ export default function Pricing() {
             </div>
             
             <Link
-              href="#"
+              href="#contact"
               className="block w-full border border-[#333333] py-4 text-center text-xs font-medium uppercase tracking-[0.1em] text-white hover:border-[#CBA365] hover:text-[#CBA365] transition-colors"
             >
-              Begin Curating
+              Contact Studio
             </Link>
           </div>
 
@@ -97,10 +97,10 @@ export default function Pricing() {
             </div>
             
             <Link
-              href="#"
+              href="#contact"
               className="block w-full bg-[#CBA365] py-4 text-center text-xs font-medium uppercase tracking-[0.1em] text-[#050505] hover:bg-[#b89154] transition-colors"
             >
-              Unlock Premium
+              Contact Studio
             </Link>
           </div>
           

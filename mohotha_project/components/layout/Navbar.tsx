@@ -31,11 +31,8 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden items-center gap-6 lg:flex">
-            <Link href="#" className="text-xs font-medium tracking-[0.1em] text-[#a3a3a3] uppercase hover:text-white transition-colors">
-              Sign In
-            </Link>
-            <Link href="#" className="border border-[#333333] px-6 py-2.5 text-xs font-medium tracking-[0.1em] text-white uppercase hover:border-[#CBA365] hover:text-[#CBA365] transition-colors">
-              Begin
+            <Link href="#contact" className="border border-[#333333] px-6 py-2.5 text-xs font-medium tracking-[0.1em] text-white uppercase hover:border-[#CBA365] hover:text-[#CBA365] transition-colors">
+              Contact Studio
             </Link>
           </div>
 
@@ -69,8 +66,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="pt-8 mt-2 border-t border-[#222222] flex flex-col gap-4">
-              <Link href="#" className="text-sm font-medium tracking-[0.1em] text-[#a3a3a3] uppercase transition-colors">Sign In</Link>
-              <Link href="#" className="text-sm font-medium tracking-[0.1em] text-[#CBA365] uppercase transition-colors">Begin Your Journey →</Link>
+              <Link href="#contact" onClick={() => setMobileOpen(false)} className="text-sm font-medium tracking-[0.1em] text-[#CBA365] uppercase transition-colors">Contact Studio →</Link>
             </div>
           </div>
         </div>

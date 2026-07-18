@@ -6,13 +6,13 @@ const steps = [
   },
   {
     number: "02",
-    title: "Refine",
-    description: "Incorporate your details, typography preferences, and photography to make the design unmistakably yours.",
+    title: "Consult",
+    description: "Contact our studio with your selected design. We handle all typography, styling, and data integration.",
   },
   {
     number: "03",
-    title: "Publish",
-    description: "Instantly deploy your invitation to a secure link, ready to be shared privately with your guest list.",
+    title: "Receive",
+    description: "We deploy your bespoke invitation to a secure link, ready to be shared with your guest list.",
   },
 ];
 
